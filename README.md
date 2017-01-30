@@ -1,17 +1,15 @@
+##Hotels Frontend
 
-Hotels Frontend
-
-* Prerequisites
+## Prerequisites
  [hotels-RESTApi](https://github.com/zayrus/hotels-RESTApi)
  
-getting started
+## Getting started
 
-git clone 
-cd hotels-Frontend && npm i
+Run `git clone` 
+Run `cd hotels-Frontend && npm i`
 
-npm start
+Run `npm start`
 
-@Todo 
+### @Todo 
 - stars filter hasn't remove filter
 - responsive is not complete
-- modify theme of slider
