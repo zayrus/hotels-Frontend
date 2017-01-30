@@ -1,0 +1,295 @@
+<header>
+  <nav class="navbar dark-blue">
+   <div class="navbar-header">
+     <a href="/" class="navbar-brand dark-blue">Hoteles</a>
+   </div>
+  </nav>
+</header>
+
+<div>
+<aside class="col-sm-3 col-xs-12">
+  <section class="filters">
+    <div class="filters-head">
+      <span class="filters-title">
+        <span>Filtrar</span>
+      </span>
+    </div>
+
+    <div class="filter">
+      <span class="filter-header">
+        <span class="icon icon-len">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </span>
+        <span>nombre del hotel</span>
+      </span>
+      
+      
+      <div class="filter-container">
+        <div class="row">
+          <div class="col-8">
+            <input type="text" placeholder="Ingrese el nombre del hotel" class="input--block " 
+            (input)="searchValue = $event.target.value" />
+          </div>
+          <div class="col-4">
+            <input type="button" value="Aceptar" class="button input--block button--secondary">
+          </div>
+        </div>
+      </div>
+      <div class="filter-xs">
+        <div class="row">
+          <div class="col-xs-9">
+            <input type="text" placeholder="Ingrese el nombre del hotel" class="input--block full" 
+            (input)="searchValue = $event.target.value" />
+          </div>
+          <div class="col-xs-3">
+            <input type="button" value="Aceptar" class="button button--secondary full">
+          </div>
+        </div>
+      </div>
+
+      <div class="am-ctn am-ctn--gtr filter">
+        <span class="filter-header col-12">
+          <span class="fa fa-usd"></span>
+          <span>Precio por noche</span>
+        </span>
+        <div class="filter-container">
+          <div class="slider-filter">
+            <div id="slider-range" class="slider-bar">
+              <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="500" [max]="2000" (onChange)="rangeValues = processRanges($event)">
+              </p-slider>
+            </div>
+            <div class="slider-currency row">
+              <div class="col-sm-6">
+                <span class="fa fa-usd"></span>
+                <span>{{rangeValues[0]}}</span>
+              </div>
+              <div class="col-sm-6 text-right">
+                <span class="fa fa-usd"></span>
+                <span>{{rangeValues[1]}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-xs">
+          <div class="slider-filter">
+            <div id="slider-range" class="slider-bar">
+              <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="500" [max]="2000" (onChange)="rangeValues = processRanges($event)">
+              </p-slider>
+            </div>
+            <div class="slider-currency row">
+              <div class="col-xs-6">
+                <span class="fa fa-usd"></span>
+                <span>{{rangeValues[0]}}</span>
+              </div>
+              <div class="col-xs-6 text-right">
+                <span class="fa fa-usd"></span>
+                <span>{{rangeValues[1]}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="am-ctn am-ctn--gtr filter">
+        <span class="filter-header col-12">
+          <span class="glyphicon glyphicon-star"></span>
+          <span>Estrellas</span>
+          <span class="icon-down arrow icon-up"></span>
+        </span>
+        <div class="filter-container">
+          <div class="options-filter">
+            <div class="option">
+              <label for="all_STAR" class="input--block">
+                <input type="checkbox" disabled="disabled" checked="checked">
+                <span class="option-description option-selected">Todas las estrellas</span>
+                <span class="option-quantity option-selected">(103)</span>
+              </label>
+            </div>
+            <div class="option">
+              <label for="5" class="input--block">
+                <input type="checkbox" name="5" id="5" value="5" 
+                (change)="StarsChecked = $event.target.value">
+                <span class="stars">
+                  <span *ngFor="let i of [0, 1, 2, 3, 4]" class="glyphicon glyphicon-star">
+                  </span>
+                </span>
+                <span class="option-quantity">(21)</span>
+              </label>
+            </div>
+            <label class="option">
+              <input type="checkbox" name="4" id="4" value="4"
+               (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span *ngFor="let i of [0, 1, 2, 3]" class="glyphicon glyphicon-star">
+                </span>
+              </span>
+              <span class="option-quantity">(59)</span>
+            </label>
+          </div>
+          <div class="option">
+            <label for="3" class="input--block">
+              <input type="checkbox" name="3" id="3" value="3"
+               (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span *ngFor="let i of [0, 1, 2]" class="glyphicon glyphicon-star">
+                </span>
+              </span>
+              <span class="option-quantity">(6)</span>
+            </label>
+          </div>
+          <div class="option">
+            <label for="2" class="input--block">
+              <input type="checkbox" name="2" id="2" value="2"
+              (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span *ngFor="let i of [0, 1]" class="glyphicon glyphicon-star">
+                </span>
+              </span>
+              <span class="option-quantity">(9)</span>
+            </label>
+          </div>
+          <div class="option">
+            <label for="1" class="input--block">
+              <input type="checkbox" name="1" id="1" value="1"
+              (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span class="glyphicon glyphicon-star"></span>
+              </span>
+              <span class="option-quantity">(5)</span>
+            </label>
+          </div>
+        </div>
+        <div class="filter-xs">
+          <div class="options-filter">
+            <div class="option">
+              <label for="all_STAR" class="input--block">
+                <input type="checkbox" disabled="disabled" checked="checked">
+                <span class="option-description option-selected">Todas las estrellas</span>
+                <span class="option-quantity option-selected">(103)</span>
+              </label>
+            </div>
+            <div class="option">
+              <label for="5" class="input--block">
+                <input type="checkbox" name="5" id="5" value="5" 
+                (change)="StarsChecked = $event.target.value">
+                <span class="stars">
+                  <span *ngFor="let i of [0, 1, 2, 3, 4]" class="glyphicon glyphicon-star">
+                  </span>
+                </span>
+                <span class="option-quantity">(21)</span>
+              </label>
+            </div>
+            <label class="option">
+              <input type="checkbox" name="4" id="4" value="4"
+               (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span *ngFor="let i of [0, 1, 2, 3]" class="glyphicon glyphicon-star">
+                </span>
+              </span>
+              <span class="option-quantity">(59)</span>
+            </label>
+          </div>
+          <div class="option">
+            <label for="3" class="input--block">
+              <input type="checkbox" name="3" id="3" value="3"
+               (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span *ngFor="let i of [0, 1, 2]" class="glyphicon glyphicon-star">
+                </span>
+              </span>
+              <span class="option-quantity">(6)</span>
+            </label>
+          </div>
+          <div class="option">
+            <label for="2" class="input--block">
+              <input type="checkbox" name="2" id="2" value="2"
+              (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span *ngFor="let i of [0, 1]" class="glyphicon glyphicon-star">
+                </span>
+              </span>
+              <span class="option-quantity">(9)</span>
+            </label>
+          </div>
+          <div class="option">
+            <label for="1" class="input--block">
+              <input type="checkbox" name="1" id="1" value="1"
+              (change)="StarsChecked = $event.target.value">
+              <span class="stars">
+                <span class="glyphicon glyphicon-star"></span>
+              </span>
+              <span class="option-quantity">(5)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</aside>
+<main  class="col-sm-9 col-xs-12">
+  <div class="hotel-ctn" *ngFor="let hotel of hotels | PricePipe:rangeValues | NamePipe:searchValue | StarsPipe: StarsChecked" >
+    <div class="col-sm-4 col-xs-4">
+        <img src="./app/img/waldorf.jpg" class="img-responsive">
+    </div>
+    
+    <div class="col-sm-5 col-xs-5">
+      <div class="hotel-description">
+        <h1 class="hotel-name">{{hotel.name}}</h1>
+        <p class="stars">
+          <span>
+            <span *ngFor="let i of hotel.stars" class="glyphicon glyphicon-star"></span>
+          </span> 
+        </p>
+        <p class="room-service">
+          <i class="fa fa-bed"></i> 
+          <span class="room-description">solo la habitación</span>
+        </p>
+        <div class="amenities">
+          <ul class="list">
+            <li>
+              <span class="fa fa-snowflake-o"></span>
+            </li>
+            <li>
+              <span class="fa fa-wifi"></span>
+            </li>
+            <li>
+              <span class="fa fa-check-square-o"></span>
+            </li>
+            <li>
+              <span class="fa fa-coffee"></span>
+            </li>
+            <li>
+              <span class="fa fa-glass"></span>
+            </li>
+            <li>
+              <span class="fa fa-users"></span>
+            </li>
+            <li>
+              <span class="fa fa-television"></span>
+            </li>
+          </ul>  
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-3 col-xs-3 price">
+      <div class="price-box">
+        <p class="price-description">Precio por noche por habitacion<p>
+        <p class="orange">
+          <span class="price-currency">ARS</span>
+          <span class="price-amount">  {{hotel.price}} </span>
+        </p>
+        <span class="legal-taxes">Impuestos y tasas no incluidos</span>
+        <a  class="button button--lg button--secondary button--block button-detail">Ver hotel</a>
+        <p class="payment-methods">
+          <strong>Pagá en cuotas</strong>
+        </p>
+        <p class="payment-methods">
+          <strong>Pagá en destino</strong>
+        </p>
+      </div>
+    </div>
+  </div> <!-- end if hotels --> 
+</main>
+</div>
