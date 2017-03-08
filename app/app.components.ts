@@ -73,7 +73,6 @@ export class AppComponent implements OnInit {
           this.oneStar++
           break
       }
-      
       let starsArr = new Array(hotels[i].stars)
       hotels[i].stars = starsArr
     }
