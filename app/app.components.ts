@@ -18,6 +18,12 @@ export class AppComponent implements OnInit {
   rangeValues: number[] = [500,2000]
   minPriceFounded: number = 0
   maxPriceFounded: number = 0
+  allStars: number = 0
+  fiveStars: number = 0
+  fourStars: number = 0
+  threeStars: number = 0
+  twoStars: number = 0
+  oneStar: number = 0
 
   constructor(
     private hotelService: HotelService) { }
@@ -38,6 +44,8 @@ export class AppComponent implements OnInit {
       })
       .then( modHotels => {
         this.maxPriceFounded = modHotels[modHotels.length -1].price
+        this.minPriceFounded = modHotels[0].price
+        this.rangeValues = [ this.minPriceFounded, this.maxPriceFounded ]
         return this.hotels = modHotels
       })
       .catch(error => this.error = error)
@@ -45,7 +53,27 @@ export class AppComponent implements OnInit {
   
   fillStars(hotels, len) {
     let i
+    this.allStars = len
+
     for ( i = 0; i < len; i++) {
+      switch (hotels[i].stars) {
+        case 5:
+          this.fiveStars++
+          break
+        case 4:
+          this.fourStars++
+          break
+        case 3:
+          this.threeStars++
+          break
+        case 2:
+          this.twoStars++
+          break
+        case 1:
+          this.oneStar++
+          break
+      }
+      
       let starsArr = new Array(hotels[i].stars)
       hotels[i].stars = starsArr
     }

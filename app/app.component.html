@@ -55,7 +55,7 @@
         <div class="filter-container">
           <div class="slider-filter">
             <div id="slider-range" class="slider-bar">
-              <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="500" [max]="2000" (onChange)="rangeValues = processRanges($event)">
+              <p-slider [(ngModel)]="rangeValues" [range]="true" [min]="minPriceFounded" [max]="maxPriceFounded" (onChange)="rangeValues = processRanges($event)">
               </p-slider>
             </div>
             <div class="slider-currency row">
@@ -102,7 +102,7 @@
               <label for="all_STAR" class="input--block">
                 <input type="checkbox" disabled="disabled" checked="checked">
                 <span class="option-description option-selected">Todas las estrellas</span>
-                <span class="option-quantity option-selected">(103)</span>
+                <span class="option-quantity option-selected">( {{ allStars }} )</span>
               </label>
             </div>
             <div class="option">
@@ -113,7 +113,7 @@
                   <span *ngFor="let i of [0, 1, 2, 3, 4]" class="glyphicon glyphicon-star">
                   </span>
                 </span>
-                <span class="option-quantity">(21)</span>
+                <span class="option-quantity">( {{ fiveStars }})</span>
               </label>
             </div>
             <label class="option">
@@ -123,7 +123,7 @@
                 <span *ngFor="let i of [0, 1, 2, 3]" class="glyphicon glyphicon-star">
                 </span>
               </span>
-              <span class="option-quantity">(59)</span>
+              <span class="option-quantity">( {{ fourStars}} )</span>
             </label>
           </div>
           <div class="option">
@@ -134,7 +134,7 @@
                 <span *ngFor="let i of [0, 1, 2]" class="glyphicon glyphicon-star">
                 </span>
               </span>
-              <span class="option-quantity">(6)</span>
+              <span class="option-quantity">( {{ threeStars }} )</span>
             </label>
           </div>
           <div class="option">
@@ -145,7 +145,7 @@
                 <span *ngFor="let i of [0, 1]" class="glyphicon glyphicon-star">
                 </span>
               </span>
-              <span class="option-quantity">(9)</span>
+              <span class="option-quantity">( {{ twoStars }} )</span>
             </label>
           </div>
           <div class="option">
@@ -155,7 +155,7 @@
               <span class="stars">
                 <span class="glyphicon glyphicon-star"></span>
               </span>
-              <span class="option-quantity">(5)</span>
+              <span class="option-quantity">( {{ oneStar }} )</span>
             </label>
           </div>
         </div>
